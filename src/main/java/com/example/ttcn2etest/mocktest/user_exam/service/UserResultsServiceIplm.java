@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +36,7 @@ public class UserResultsServiceIplm implements UserResultsService {
     private final ModelMapper mapper;
 
     @Override
-    public ResponseEntity<?> getUserResultsDetail(long id) {
+    public ResponseEntity<?> getUserResultsDetail(UUID id) {
         Optional<UserResults> results = userResultsRepository.findById(id);
         if (!results.isPresent()) {
             throw new RuntimeException("Khong tim thay id");
@@ -67,7 +68,7 @@ public class UserResultsServiceIplm implements UserResultsService {
     }
 
     @Override
-    public ResponseEntity<?> getListUserResults(long userId) {
+    public ResponseEntity<?> getListUserResults(Long userId) {
         List<UserResultsDTO> results = new ArrayList<>();
         Optional<User> user1 = userRepository.findById(userId);
         if (!user1.isPresent()) {
@@ -80,7 +81,7 @@ public class UserResultsServiceIplm implements UserResultsService {
                 UserResultsDTO resultsDTO = mapper.map(rs , UserResultsDTO.class );
                 resultsDTO.setNameExam(response.getExam().getName());
                 resultsDTO.setTime(response.getExam().getTimeExam());
-                resultsDTO.setKey((int)resultsDTO.getId());
+                resultsDTO.setKey(resultsDTO.getId());
                 return resultsDTO;
             }).collect(Collectors.toList()));
         }

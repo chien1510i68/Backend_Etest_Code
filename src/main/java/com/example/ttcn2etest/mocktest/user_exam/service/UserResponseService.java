@@ -6,6 +6,7 @@ import com.example.ttcn2etest.mocktest.user_exam.request.UserResponseRequest;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface UserResponseService {
     UserResponseDTO createUserResponse (UserResponseRequest request);
@@ -13,7 +14,7 @@ public interface UserResponseService {
 
     ResponseEntity addUserResponse(UserResponseRequest request );
 
-    boolean deleteUserResponse(long id ) ;
+    boolean deleteUserResponse(UUID id ) ;
 
 
 

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/mocktest/answer/")
 public class AnswerController {
@@ -37,7 +39,7 @@ public class AnswerController {
     }
 
     @DeleteMapping("del/{id}")
-    public ResponseEntity<?> deleteAnswer(@PathVariable long id) {
+    public ResponseEntity<?> deleteAnswer(@PathVariable String id) {
         boolean isDelete = answerService.deleteAnswer(id);
         return ResponseEntity.ok(isDelete);
     }

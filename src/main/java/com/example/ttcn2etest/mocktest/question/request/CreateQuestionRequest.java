@@ -6,17 +6,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class CreateQuestionRequest {
-    private long id ; 
+    private String id ;
     private String content ;
     private String type ;
     private String description ;
     private float point ;
-    private long section_id ;
+    private String section_id ;
 
     private List<AnswerReq> listAnswer ;
 

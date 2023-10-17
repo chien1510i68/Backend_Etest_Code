@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/mocktest/question/")
@@ -43,7 +44,7 @@ public class QuestionController {
     }
 
     @DeleteMapping("del/{id}")
-    public ResponseEntity<?> deleteQuestion(@PathVariable Long id) {
+    public ResponseEntity<?> deleteQuestion(@PathVariable String id) {
         Boolean isDelete = questionService.deleteQuestion(id);
         BaseItemResponse response = new BaseItemResponse();
         response.setSuccess(isDelete);

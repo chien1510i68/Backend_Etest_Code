@@ -27,10 +27,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -164,7 +161,7 @@ public class UserResponseServiceImplm implements UserResponseService {
     }
 
     @Override
-    public boolean deleteUserResponse(long id) {
+    public boolean deleteUserResponse(UUID id) {
         return false;
     }
 

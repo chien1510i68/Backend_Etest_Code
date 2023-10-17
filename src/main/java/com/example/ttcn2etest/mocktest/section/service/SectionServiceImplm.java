@@ -13,10 +13,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 @Slf4j
@@ -68,7 +70,7 @@ public class SectionServiceImplm implements SectionService {
     }
 
     @Override
-    public boolean deleteSection(long id) {
+    public boolean deleteSection(String id) {
         Optional<Section> section = sectionRepository.findById(id);
         if (!section.isPresent()) {
             throw new RuntimeException("Id không tồn tại");
@@ -86,13 +88,13 @@ public class SectionServiceImplm implements SectionService {
     }
 
     @Override
+    @Transactional
     public Section createSectionInExam(SectionRequest sectionRequest) {
         Section section = new Section();
         section.setTitle(sectionRequest.getTitle());
         section.setDescription(sectionRequest.getDescription());
         section.setType(sectionRequest.getType());
         section.setFile(sectionRequest.getFile());
-//        section.setExam(exam);
         sectionRepository.save(section);
         List<Question> questions = new ArrayList<>();
         questionRepository.saveAll(questions);

@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/mocktest/exam/")
@@ -36,7 +37,7 @@ public class ExamController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<?> updateExam (@RequestBody ExamRequest request){
+    public ResponseEntity<?> updateExam(@RequestBody ExamRequest request) {
         BaseItemResponse baseItemResponse = new BaseItemResponse();
         baseItemResponse.setSuccess();
         baseItemResponse.setData(examService.updateExam(request));
@@ -44,36 +45,31 @@ public class ExamController {
 
     }
 
-    @GetMapping("")
-    public ResponseEntity<?> getAllExam(){
-        List<ExamDTO> exams = examService.getAllExam();
-        return ResponseEntity.ok(exams);
-    }
 
     @GetMapping("{id}")
-    public ResponseEntity<?> getExamByID(@PathVariable long id){
+    public ResponseEntity<?> getExamByID(@PathVariable String id) {
         DetailExamDTO exam = examService.getByID(id);
         return ResponseEntity.ok(exam);
     }
 
     @DeleteMapping("del/{id}")
-    public ResponseEntity<?> deleteByID(@PathVariable long id){
+    public ResponseEntity<?> deleteByID(@PathVariable String id) {
 
         boolean isDelete = examService.deleteExam(id);
         return ResponseEntity.ok(isDelete);
     }
 
     @GetMapping("detailExams")
-    public ResponseEntity<?> listDetailExam (){
+    public ResponseEntity<?> listDetailExam() {
         List<DetailExamDTO> detailExamDTOS = examService.listDetailExam();
         BaseListItemResponse response = new BaseListItemResponse();
-        response.setResult(detailExamDTOS , detailExamDTOS.size());
+        response.setResult(detailExamDTOS, detailExamDTOS.size());
         response.setSuccess(true);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("addSection")
-    public  ResponseEntity<?> addSectionToExam (@RequestBody SectionRequest sectionRequest){
+    public ResponseEntity<?> addSectionToExam(@RequestBody SectionRequest sectionRequest) {
         ExamDTO exam = examService.addSectionToExam(sectionRequest);
         BaseItemResponse response = new BaseItemResponse();
         response.setSuccess(true);
@@ -82,23 +78,20 @@ public class ExamController {
     }
 
     @GetMapping("{id}/{type}")
-    public ResponseEntity<?> findSections (@PathVariable long id ,@PathVariable String type){
+    public ResponseEntity<?> findSections(@PathVariable String id, @PathVariable String type) {
         BaseListItemResponse response = new BaseListItemResponse();
         response.setSuccess(true);
-        List<Section> sections = examService.findQuestionByType(id , type) ;
+        List<Section> sections = examService.findQuestionByType(id, type);
         response.setResult(sections, sections.size());
-        return  ResponseEntity.ok(response);
+        return ResponseEntity.ok(response);
 
     }
 
-    @GetMapping("/file")
-    public ResponseEntity<?> createExamByFile ( ){
+    @GetMapping("file")
+    public ResponseEntity<?> createExamByFile() {
         Exam exam = examService.createExamByExcel("demo.xlsx");
         return ResponseEntity.ok(exam);
     }
-
-
-
 
 
 }

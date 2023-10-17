@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 public class SectionRequest {
-    private long id ;
-    private long exam_id ;
+    private String id ;
+    private String exam_id ;
     private String title;
     private String file ;
     private String type ;

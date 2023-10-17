@@ -7,11 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
     boolean existsByUsername(String userName);
-    User findUserById(long id);
+    User findUserById(String id);
 
     Optional<User> findByUsername(String username);
 

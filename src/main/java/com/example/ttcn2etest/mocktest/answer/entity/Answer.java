@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -17,8 +20,8 @@ import lombok.NoArgsConstructor;
 
 public class Answer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String id ;
+
     private String answer;
     private Integer answerKey;
 
@@ -28,6 +31,7 @@ public class Answer {
     private Question question;
 
     public Answer(String answer, Integer answerKey, Question question) {
+        this.id = UUID.randomUUID().toString();
         this.answer = answer;
         this.answerKey = answerKey;
         this.question = question;

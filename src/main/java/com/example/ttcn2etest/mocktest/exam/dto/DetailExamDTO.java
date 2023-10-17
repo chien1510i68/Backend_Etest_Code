@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class DetailExamDTO {
-    private long id;
+    private String id;
     private String name;
     private long timeExam;
 

@@ -7,22 +7,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResultsDTO {
-    private long id;
+    private UUID id;
 
     private float point;
     private String comment;
     private String nameExam ;
     private long time ;
-    private int key ;
+    private UUID key ;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Timestamp createDate;

@@ -7,9 +7,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
-import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -19,8 +20,7 @@ import java.util.List;
 @Entity
 public class UserResponse {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id ;
+    private String id = UUID.randomUUID().toString();
 
     private int count = 0;
     @ManyToOne

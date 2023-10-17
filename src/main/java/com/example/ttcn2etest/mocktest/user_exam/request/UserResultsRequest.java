@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -14,5 +15,5 @@ import java.util.List;
 public class UserResultsRequest {
     private List<Integer> answerKey ;
     private String value ;
-    private long questionId;
+    private String questionId;
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class SectionDTO {
-    private long id ;
+    private String id ;
     private String title ;
     private String file ;
     private String description ;

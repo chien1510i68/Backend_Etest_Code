@@ -8,10 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface QuestionRepository extends JpaRepository<Question , Long> {
+public interface QuestionRepository extends JpaRepository<Question , String> {
    List<Question> findQuestionsBySection(Section  section);
-   Question findQuestionById(long id);
+   Question findQuestionById(UUID id);
 
 }

@@ -37,6 +37,7 @@ public class User {
     private String password;
     private String phone;
     private String email;
+    @Column(name = "is_verified")
     private boolean isVerified; // Trạng thái xác thực
 
     //    @Column(name = "password_no_encode", length = 100)

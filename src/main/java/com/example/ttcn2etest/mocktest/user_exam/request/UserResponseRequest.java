@@ -4,14 +4,15 @@ import com.example.ttcn2etest.mocktest.user_exam.entity.UserResults;
 import lombok.Data;
 
 import java.util.List;
+import java.util.UUID;
 
 @Data
 public class UserResponseRequest {
-    private long id ;
+    private String id ;
     private int totalPoint ;
     private int count ;
-    private long exam_id;
-    private long user_id ;
+    private String exam_id;
+    private String user_id ;
 
     List<UserResultsRequest> responseUsers ;
 //    private String responseUsers ;

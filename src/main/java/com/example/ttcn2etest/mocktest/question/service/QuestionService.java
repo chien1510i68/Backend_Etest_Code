@@ -6,11 +6,12 @@ import com.example.ttcn2etest.mocktest.question.entity.Question;
 import com.example.ttcn2etest.mocktest.section.entity.Section;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface QuestionService {
     Question createQuestion(CreateQuestionRequest request);
     Question updateQuestion(CreateQuestionRequest request);
-    boolean deleteQuestion(long id);
+    boolean deleteQuestion(String id);
 
     List<Question> listQuestion();
 

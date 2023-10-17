@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/mocktest/section/")
@@ -40,7 +41,7 @@ public class SectionController {
 
     }
     @DeleteMapping("del/{id}")
-    public ResponseEntity<?> deleteSection (@PathVariable long id){
+    public ResponseEntity<?> deleteSection (@PathVariable String id){
         boolean isDelete = sectionService.deleteSection(id);
 //        BaseItemResponse baseItemResponse = new BaseItemResponse();
 //        baseItemResponse.setSuccess();

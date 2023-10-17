@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.UUID;
+
 @Service
 public class AnswerServiceImpl implements AnswerService {
     private final AnswerRepository answerRepository;
@@ -47,7 +49,7 @@ public class AnswerServiceImpl implements AnswerService {
     }
 
     @Override
-    public boolean deleteAnswer(long id) {
+    public boolean deleteAnswer(String id) {
         answerRepository.deleteById(id);
         return true;
     }

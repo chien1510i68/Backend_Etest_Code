@@ -72,6 +72,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/user/auth/**").permitAll()
                 .requestMatchers("/file/**").permitAll()
+                .requestMatchers("/client/exam/**").permitAll()
                 .requestMatchers("/user/forgot/password").permitAll()
                 .requestMatchers("/consulting/registration").permitAll()
                 .requestMatchers(request -> {

@@ -5,6 +5,7 @@ import com.example.ttcn2etest.mocktest.section.entity.Section;
 import com.example.ttcn2etest.mocktest.section.request.SectionRequest;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface SectionService {
@@ -12,7 +13,7 @@ public interface SectionService {
 
      Section updateSection (SectionRequest request);
 
-     boolean deleteSection (long id);
+     boolean deleteSection (String id);
 
      List<Section> getAllSection();
 

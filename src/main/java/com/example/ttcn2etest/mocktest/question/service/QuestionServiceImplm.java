@@ -8,12 +8,14 @@ import com.example.ttcn2etest.mocktest.question.request.CreateQuestionRequest;
 import com.example.ttcn2etest.mocktest.question.entity.Question;
 import com.example.ttcn2etest.mocktest.section.entity.Section;
 import com.example.ttcn2etest.mocktest.section.repository.SectionRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
@@ -105,7 +107,7 @@ public class QuestionServiceImplm implements QuestionService {
     }
 
     @Override
-    public boolean deleteQuestion(long id) {
+    public boolean deleteQuestion(String id) {
         Optional<Question> question = questionRepository.findById(id);
         if (!question.isPresent()) {
             throw new RuntimeException("Không tồn tại id");
@@ -122,6 +124,7 @@ public class QuestionServiceImplm implements QuestionService {
     }
 
     @Override
+    @Transactional
     public Question createQuestionInSection(CreateQuestionRequest request, Section section) {
         Question question = new Question();
         question.setQuestionType(request.getType());
